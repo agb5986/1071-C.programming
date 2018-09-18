@@ -7,3 +7,4 @@ week 01
 
 week 02
 * leap.cpp
+* seconds convert
