@@ -1,0 +1,21 @@
+#include <stdio.h>
+int main(){
+
+    int sec = 0;
+    int hh = 0, mm = 0, ss = 0 ;
+    printf("Enter seconds: ");
+    scanf("%d", &sec);
+    while(sec>= 0){
+        hh = (sec/3600);//換算小時
+        mm = (sec%3600)/60;//取換算完小時後餘數，換算成分鐘
+        ss = (sec%60);//取換算完分鐘餘數
+        printf("%d seconds = %02d:%02d:%02d\n", sec, hh, mm, ss );//輸出結果
+
+        printf("Enter seconds: ");
+
+        scanf("%d", &sec);
+    }
+
+    return 0;
+
+}
