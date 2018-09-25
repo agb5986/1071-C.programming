@@ -8,3 +8,8 @@ week 01
 week 02
 * leap.cpp
 * seconds convert.cpp
+week 02
+* Convert seconds using while loop.cpp
+* Leap year using while loop.cpp
+* BMI using while.cpp
+* sum(n1,n2).cpp
