@@ -14,7 +14,7 @@ int main()
             break;
         switch(choice)//兩類主情形
         {
-        case 1:
+        case 1://選擇印出矩形
             printf("Enter height and width: ");
             scanf("%d %d", &height,&width);//存入高及寬
             for(int i=1; i<=height; i++)
