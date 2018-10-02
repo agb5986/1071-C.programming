@@ -37,7 +37,7 @@ int main()
         case 2://選擇印出三角形
             printf("Enter height and type: ");
             scanf("%d %d", &height, &type);
-            if(type>=5)//設定四類三角形，非此四類，結束程序
+            if(type>=5 &&type<=0)//設定四類三角形，非此四類，結束程序
                 break;
             switch(type)//四類情形
             {
