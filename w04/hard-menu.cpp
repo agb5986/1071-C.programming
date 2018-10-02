@@ -6,7 +6,7 @@ void prchar(char c, int n)
         printf("%c",c);
     }
 }
-void drawRect(int height= 0,int width= 0, int filled= 0)//設定函式庫
+void drawRect(int height,int width, int filled)//設定函式庫
 {
     if(filled)
     {
@@ -39,12 +39,12 @@ void drawRect(int height= 0,int width= 0, int filled= 0)//設定函式庫
         }
     }
 }
-void drawVerTri(int height= 0, int type= 0,int filled= 0)
+void drawVerTri(int height, int type,int filled)
 {
     switch(type)
     {
     case 1:
-        if(filled)
+        if(filled==1)
         {
             for(int i=1; i<=height; i++)
             {
@@ -56,13 +56,19 @@ void drawVerTri(int height= 0, int type= 0,int filled= 0)
         {
             for(int i=1; i<=height; i++)
             {
-                printf("*");
-                prchar(' ',i-2);
-                printf("*");
-
+                if(i==1 || i==height)
+                {
+                    prchar('*',i);
+                }
+                else
+                {
+                    printf("*");
+                    prchar(' ',i-2);
+                    printf("*");
+                }printf("\n");
             }
+            break;
         }
-        printf("\n");
     }
 }
 int main()
@@ -87,57 +93,17 @@ int main()
             drawRect(height,width,filled);
             break;//離開迴圈
         case 2://選擇印出三角形
-            printf("Enter height and type: ");
+            printf("Enter height, type, filled: ");
             scanf("%d %d %d", &height, &type, &filled);
-            if(type>=5 &&type<=0)//設定四類三角形，非此四類，結束程序
-                break;
+
             switch(type)//四類情形
             {
             case 1:
-
+                printf("Enter height, type, filled: ");
+                scanf("%d %d %d", &height, &type, &filled);
+                drawVerTri(height,type,filled);
                 break;//結束
-            case 2:
-                for(int i=height; i>=1; i--)
-                {
-                    for(int j=height; j>=1; j--)
-                    {
-                        if(i==j|| i==height||j==1)//設定第一類三角形左右顛倒
-                            printf("*");
-                        else
-                            printf(" ");
 
-                    }
-                    printf("\n");
-                }
-                break;
-            case 3:
-                for(int i=1; i<=height; i++)
-                {
-                    for(int j=1; j<=height; j++)
-                    {
-                        if(i+j==height+1|| j==1||i==1)//第一類三角形上下顛倒
-                            printf("*");
-                        else
-                            printf(" ");
-
-                    }
-                    printf("\n");
-                }
-                break;
-            case 4:
-                for(int i=1; i<=height; i++)
-                {
-                    for(int j=1; j<=height; j++)
-                    {
-                        if(j==height||i==j ||i==1)//第二類三角形上下顛倒
-                            printf("*");
-                        else
-                            printf(" ");
-
-                    }
-                    printf("\n");
-                }
-                break;
             }
 
         }
