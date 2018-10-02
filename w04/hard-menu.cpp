@@ -44,10 +44,37 @@ void drawVerTri(int height, int type,int filled)
     switch(type)
     {
     case 1:
-        if(filled==1)
+        if(filled)
         {
             for(int i=1; i<=height; i++)
             {
+                prchar('*',i);
+                printf("\n");
+            }
+
+        }
+        else
+        {
+            for(int i=1; i<=height; i++)
+            {
+                for(int j=1; j<=height; j++)
+                {
+
+                    if(i==height || i==j||j==1)
+                        printf("*");
+                    else
+                        printf(" ");
+                }
+                printf("\n");
+            }
+        }
+        break;
+    case 2:
+        if(filled)
+        {
+            for(int i=1; i<=height; i++)
+            {
+                prchar(' ',height-i);
                 prchar('*',i);
                 printf("\n");
             }
@@ -56,24 +83,105 @@ void drawVerTri(int height, int type,int filled)
         {
             for(int i=1; i<=height; i++)
             {
-                if(i==1 || i==height)
+                for(int j=1; j<=height; j++)
                 {
-                    prchar('*',i);
+                    if(i+j==height+1|| j==height||i==height)//設定第一類三角形左右顛倒
+                        printf("*");
+                    else
+                        printf(" ");
                 }
-                else
-                {
-                    printf("*");
-                    prchar(' ',i-2);
-                    printf("*");
-                }printf("\n");
+                printf("\n");
             }
-            break;
+        }
+    case 3:
+        if(filled)
+        {
+            for(int i=1; i<=height; i++)
+            {
+                prchar('*',height-i+1);
+                printf("\n");
+            }
+        }
+        else
+        {
+            for(int i=1; i<=height; i++)
+            {
+                for(int j=height; j>=1; j--)
+                {
+                    if(i==1 || i==j||j==height)
+                        printf("*");
+                    else
+                        printf(" ");
+                }
+                printf("\n");
+            }
+        }
+    case 4:
+        if(filled)
+        {
+            for(int i=1; i<=height; i++)
+            {
+                prchar(' ',i-1);
+                prchar('*',height-i+1);
+                printf("\n");
+            }
+        }
+        else
+        {
+            for(int i=1; i<=height; i++)
+            {
+                for(int j=1; j<=height; j++)
+                {
+                    if(j==height|| j==i||i==1)//設定第一類三角形左右顛倒
+                        printf("*");
+                    else
+                        printf(" ");
+                }
+                printf("\n");
+            }
         }
     }
 }
+void drawTsoTri(int height, int type,int filled)
+{
+    switch(type)
+    {
+    case 1:
+        if(filled)
+        {
+            for(int i=1; i<=height; i++)
+            {
+                prchar(' ',height-i);
+                prchar('*',2*i-1);
+                printf("\n");
+            }
+        }
+        else{
+            for(int i=1; i<=height; i++){
+                prchar(' ',height-i);
+                printf("*");
+                prchar('*',i-2);
+                printf("*");
+                printf("\n");
+            }
+
+        }
+    case 2:
+        if(filled){
+            for(int i=height; i<=1; i--)
+            {
+                prchar(' ',height-i);
+                prchar('*',2*i-1);
+                printf("\n");
+            }
+        }
+
+    }
+}
+
 int main()
 {
-    int choice, height, width, type, filled;
+    int choice, height, width, type, filled,row;
     while(1)
     {
         printf("Main Menu\n");
@@ -83,7 +191,7 @@ int main()
         printf("4. Exit\n");
         printf("=> ");
         scanf("%d", &choice);
-        if(choice==3)//設定離開指令
+        if(choice==4)//設定離開指令
             break;
         switch(choice)//兩類主情形
         {
@@ -99,11 +207,30 @@ int main()
             switch(type)//四類情形
             {
             case 1:
-                printf("Enter height, type, filled: ");
-                scanf("%d %d %d", &height, &type, &filled);
                 drawVerTri(height,type,filled);
                 break;//結束
+            case 2:
+                drawVerTri(height,type,filled);
+                break;//結束
+            case 3:
+                drawVerTri(height,type,filled);
+                break;//結束
+            case 4:
+                drawVerTri(height,type,filled);
+                break;//結束
+            }
+        case 3:
+            printf("Enter height, type, filled: ");
+            scanf("%d %d %d", &height, &type, &filled);
 
+            switch(type)
+            {
+            case 1:
+                drawTsoTri(height, type, filled);
+                break;
+            case 2:
+                drawTsoTri(height, type, filled);
+                break;
             }
 
         }
