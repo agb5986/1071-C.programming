@@ -5,6 +5,7 @@ int main()
     int choice, height, width,type;
     while(1)
     {
+        printf("Main Menu\n");
         printf("1. Rectangle\n");
         printf("2. Vertical Triangle\n");
         printf("3. Exit\n");
@@ -56,11 +57,11 @@ int main()
                 }
                 break;//結束
             case 2:
-                for(int i=height; i>=1; i--)
+                for(int i=1; i<=height; i++)
                 {
-                    for(int j=height; j>=1; j--)
+                    for(int j=1; j<=height; j++)
                     {
-                        if(i==j|| i==height||j==1)//設定第一類三角形左右顛倒
+                        if(i+j==height+1|| j==height||i==height)//設定第一類三角形左右顛倒
                             printf("*");
                         else
                             printf(" ");
