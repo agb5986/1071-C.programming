@@ -1,0 +1,158 @@
+#include <stdio.h>
+void add(int n1,int n2,int sum)
+{
+    sum=n1+n2;
+    printf("%d + %d= %d \n",n1, n2, sum);
+}
+void sub(int n1, int n2, int sum)
+{
+    sum=n1-n2;
+    printf("%d - %d= %d \n",n1, n2, sum);
+}
+void multi(int n1, int n2, int sum)
+{
+    sum=n1*n2;
+    printf("%d * %d= %d \n",n1, n2, sum);
+}
+void divis(int n1, int n2, int sum)
+{
+    sum=n1/n2;
+    printf("%d / %d= %d \n",n1, n2, sum);
+}
+void remind(int n1, int n2, int sum)
+{
+    sum=n1%n2;
+    printf("%d %% %d= %d \n",n1, n2, sum);
+}
+void BMI(int h1, int h2, float weight1, float weight2)
+{
+    for(int i=h1; i<=h2; i++)
+    {
+        weight1=18.5*(i*i)/10000.;
+        weight2=24*(i*i)/10000.;
+        printf("%4d cm: %.1f ~ %.1f \n", i, weight1, weight2);
+    }
+}
+void prchar(char c,int n)
+{
+    for(int i=1; i<=n; i++)
+    {
+        printf("%c",c);
+    }
+}
+void drawTsoTri(int height)
+{
+    for(int i=1; i<=height; i++)
+    {
+        prchar(' ',height-i);
+        prchar('*',i);
+        printf(" ");
+        prchar('*',i);
+        printf("\n");
+    }
+}
+int encode(int N)
+{
+    int a, b, c, d, e,cdeb;
+    a=N%10000/1000.;
+    b=N%1000/100.;
+    c=N%100/10.;
+    d=N%10;
+    e=(a+5)%10;
+    cdeb=(c*1000.)+(d*100.)+(e*10.)+(b*1.);
+    return cdeb;
+
+}
+int decode(int N)
+{
+    int a, b, c, d, e, edab;
+    a=N%10000/1000.;
+    b=N%1000/100.;
+    c=N%100/10.;
+    d=N%10;
+    if(c<5)
+    e=(c+5);
+    if(c>5)
+    e=(c-5);
+
+    edab=(e*1000.)+(d*100.)+(a*10.)+(b*1);
+    return edab;
+
+}
+
+int main()
+{
+    int n1= 0, n2= 0, sum= 0, choice, height;
+    float h1, h2, weight1, weight2;
+    while(1)
+    {
+
+        printf("(1) Arithmetic Computation\n");
+        printf("(2) List BMI ranges\n");
+        printf("(3)Draw Four Vertical Triangles\n");
+        printf("(4) encode(n)\n");
+        printf("(5) decode(n)\n");
+        printf("(6) Exit\n");
+        printf("-> ");
+        scanf("%d", &choice);
+        if(choice==6)break;
+        switch(choice)
+        {
+        case 1:
+            printf("Enter two integers: ");
+            scanf("%d %d", &n1, &n2);
+            add(n1, n2, sum);
+            sub(n1, n2, sum);
+            multi(n1, n2, sum);
+            divis(n1, n2, sum);
+            remind(n1, n2, sum);
+            break;
+        case 2:
+            while(1)
+            {
+                printf("Enter height(-1 to exit): ");
+                scanf("%f %f", &h1, &h2);
+                if(h1==-1 || h2==-1)
+                {
+                    printf("Bye! Coding by 407410264\n");
+                    break;
+                }
+                BMI(h1, h2, weight1, weight2);
+            }
+            break;
+        case 3:
+            printf("Enter height(-1 to exit): ");
+            scanf("%d", &height);
+            if(height==-1)
+            {
+                printf("Bye! Coding by 407410264\n");
+                break;
+            }
+            drawTsoTri(height);
+            break;
+        case 4:
+            int N;
+            printf("Enter N(-1 to exit): ");
+            scanf("%d", &N);
+            if(N==-1)
+            {
+                printf("Bye! Coding by 407410264\n");
+                break;
+            }
+
+            printf("encode(%d) = %d\n", N, encode(N));
+            break;
+        case 5:
+            printf("Enter N(-1 to exit): ");
+            scanf("%d", &N);
+            if(N==-1)
+            {
+                printf("Bye! Coding by 407410264\n");
+                break;
+            }
+            printf("decode(%d) = %d\n", N, decode(N));
+            break;
+        }
+    }
+
+}
